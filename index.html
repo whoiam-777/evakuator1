@@ -3,84 +3,480 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эвакуатор и Манипулятор 2в1 | Ержан</title>
+    <title>Ержан Эвакуатор-Манипулятор 24/7 | Быстро и Надежно</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Общие стили и переменные */
         :root {
-            --primary-color: #e63946; /* Красный для кнопок */
-            --dark-color: #1d3557;
-            --light-color: #f1faee;
-            --whatsapp-color: #25d366;
+            --primary-color: #ff4757; /* Ярко-красный */
+            --secondary-color: #2c3e50; /* Темно-синий */
+            --accent-color: #3498db; /* Синий для акцентов */
+            --text-light: #ecf0f1;
+            --text-dark: #34495e;
+            --bg-light: #f5f7fa;
+            --bg-dark: #2f3640;
+            --gradient-main: linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%);
+            --gradient-dark: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         }
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: var(--light-color); color: #333; }
-        
-        /* Шапка с кнопками */
-        header { 
-            background: #fff; padding: 15px; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;
-        }
-        
-        .contact-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-        
-        .btn { 
-            padding: 12px 20px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px;
-        }
-        .btn-call { background: var(--primary-color); }
-        .btn-whatsapp { background: var(--whatsapp-color); }
 
-        /* Главный блок */
-        .hero { 
-            padding: 40px 20px; text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('photo3.jpg') center/cover;
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden; /* Предотвращает горизонтальный скролл при анимациях */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        h1 { font-size: 2.8em; font-weight: 700; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        h2 { font-size: 2.2em; text-align: center; margin-bottom: 40px; position: relative; }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: var(--gradient-dark);
+            color: var(--text-light);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 100;
+        }
+        header .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        header .tagline {
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-main);
+            color: var(--text-light);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before { /* Фон с эффектом параллакса */
+            content: '';
+            background: url('evacuator-mercedes.jpg') no-repeat center center/cover;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.3;
+            transform: scale(1.1); /* Небольшое увеличение для эффекта */
+            z-index: -1;
+        }
+        .hero h1 {
+            margin-top: 0;
+            font-size: 3.5em; /* Больше на десктопе */
+            animation: fadeInDown 1s ease-out;
+        }
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .hero .contact-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: pulse 1.5s infinite;
+        }
+        .hero .contact-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: none; /* Отключаем пульс при наведении */
+        }
+
+        /* Секция преимуществ */
+        .features {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        .feature-item .icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            animation: rotateIn 1s ease-out; /* Анимация иконок */
+        }
+        .feature-item h3 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+        }
+        .feature-item p {
+            font-size: 0.95em;
+            color: var(--text-dark);
+        }
+
+        /* Секция услуг/галереи */
+        .services-gallery {
+            background: var(--bg-dark);
+            padding: 80px 0;
+            color: var(--text-light);
+        }
+        .services-gallery h2 {
+            color: var(--text-light);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .gallery-item::before { /* Эффект наведения */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(var(--primary-color-rgb, 255, 71, 87), 0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .gallery-item:hover::before { opacity: 1; }
+        .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(var(--secondary-color-rgb, 44, 62, 80), 0.9) 0%, rgba(var(--secondary-color-rgb, 44, 62, 80), 0) 100%);
             color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 2;
+        }
+        .gallery-caption i {
+            margin-right: 8px;
+            color: var(--primary-color);
         }
 
-        /* Галерея */
-        .gallery { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .gallery-item { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .gallery-item img { width: 100%; height: 250px; object-fit: cover; }
-        .gallery-item p { padding: 15px; margin: 0; font-weight: bold; }
+        /* Контактная секция */
+        .contact-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+            text-align: center;
+        }
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+        .contact-section .contact-info {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+        .contact-section .contact-info i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
 
-        footer { background: var(--dark-color); color: white; text-align: center; padding: 30px; }
+        /* Футер */
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+        footer .social-icons a {
+            color: var(--text-light);
+            font-size: 1.8em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Плавающие кнопки WhatsApp и Call */
+        .fab-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .fab-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounceIn 0.8s ease-out;
+        }
+        .fab-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .fab-button.whatsapp { background-color: #25d366; }
+        .fab-button.call { background-color: var(--primary-color); }
+        
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            .hero { padding: 60px 15px; }
+            .hero p { font-size: 1.1em; margin-bottom: 30px; }
+            .hero .contact-btn { padding: 12px 25px; font-size: 1em; }
+            .features-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .fab-buttons { bottom: 15px; right: 15px; gap: 10px; }
+            .fab-button { width: 50px; height: 50px; font-size: 1.5em; }
+        }
+
+        /* Keyframe Анимации */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+            50% { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+            to { opacity: 1; transform: rotate(0deg) scale(1); }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Анимации при прокрутке (ScrollReveal - на JavaScript) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal.left {
+            transform: translateX(-50px);
+        }
+        .reveal.left.active {
+            transform: translateX(0);
+        }
+        .reveal.right {
+            transform: translateX(50px);
+        }
+        .reveal.right.active {
+            transform: translateX(0);
+        }
+        .reveal.zoom {
+            transform: scale(0.8);
+        }
+        .reveal.zoom.active {
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <strong>Услуги эвакуатора и манипулятора</strong>
-    <div class="contact-buttons">
-        <a href="tel:+77474640078" class="btn btn-call">📞 Позвонить</a>
-        <a href="https://wa.me/77474640078" class="btn btn-whatsapp">💬 WhatsApp</a>
-    </div>
-</header>
+    <header>
+        <div class="logo">ЕРЖАН</div>
+        <div class="tagline">Эвакуатор & Манипулятор 24/7</div>
+    </header>
 
-<section class="hero">
-    <h1>Профессиональная помощь на дороге</h1>
-    <p>Эвакуатор и Манипулятор (2 в 1) — подача от 20 минут!</p>
-    <p><strong>Оператор: Ержан</strong></p>
-</section>
+    <section class="hero">
+        <div class="container">
+            <h1>Быстрая помощь на дороге в любой ситуации!</h1>
+            <p>Эвакуация авто и спецтехники. Подача от 20 минут.</p>
+            <a href="tel:+77474640078" class="contact-btn"><i class="fas fa-phone-alt"></i> Позвонить Ержану</a>
+        </div>
+    </section>
 
-<section class="gallery">
-    <div class="gallery-item">
-        <img src="1000150064.jpg" alt="Эвакуатор Mercedes">
-        <p>Спецтехника Mercedes для эвакуации любой сложности</p>
-    </div>
-    <div class="gallery-item">
-        <img src="1000150080.jpg" alt="Работа манипулятора">
-        <p>Безопасная погрузка краном-манипулятором в любое время</p>
-    </div>
-    <div class="gallery-item">
-        <img src="1000150062.jpg" alt="Манипулятор Atlas">
-        <p>Перевозка тяжелых грузов и оборудования</p>
-    </div>
-</section>
+    <section class="features">
+        <div class="container">
+            <h2 class="reveal">Почему выбирают нас?</h2>
+            <div class="features-grid">
+                <div class="feature-item reveal left">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <h3>Оперативность 24/7</h3>
+                    <p>На связи круглосуточно, без выходных и праздников. Приедем максимально быстро.</p>
+                </div>
+                <div class="feature-item reveal zoom">
+                    <div class="icon"><i class="fas fa-truck-pickup"></i></div>
+                    <h3>Эвакуатор + Манипулятор</h3>
+                    <p>Универсальная техника для любых задач: от легковых до спецтехники.</p>
+                </div>
+                <div class="feature-item reveal right">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Любой район и межгород</h3>
+                    <p>Работаем по всему городу и области, возможна перевозка на дальние расстояния.</p>
+                </div>
+                <div class="feature-item reveal left">
+                    <div class="icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Бережная погрузка</h3>
+                    <p>Опытные водители гарантируют аккуратную и безопасную эвакуацию вашего авто.</p>
+                </div>
+                <div class="feature-item reveal zoom">
+                    <div class="icon"><i class="fas fa-tag"></i></div>
+                    <h3>Честные цены</h3>
+                    <p>Фиксированная стоимость услуг, без скрытых доплат. Расчет на месте.</p>
+                </div>
+                <div class="feature-item reveal right">
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <h3>Широкий спектр услуг</h3>
+                    <p>Помощь при поломках, ДТП, вытаскивание из кювета, перевозка спецтехники.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>© 2024 Услуги эвакуатора | Ержан</p>
-    <p>Тел: +7 747 464 0078</p>
-    <p>Работаем 24/7</p>
-</footer>
+    <section class="services-gallery">
+        <div class="container">
+            <h2 class="reveal">Наша техника и работы</h2>
+            <div class="gallery-grid">
+                <a href="evacuator-mercedes.jpg" target="_blank" class="gallery-item reveal left">
+                    <img src="evacuator-mercedes.jpg" alt="Эвакуатор Mercedes-Benz">
+                    <div class="gallery-caption"><i class="fas fa-truck-moving"></i> Эвакуатор Mercedes-Benz</div>
+                </a>
+                <a href="evacuator-bmw.jpg" target="_blank" class="gallery-item reveal zoom">
+                    <img src="evacuator-bmw.jpg" alt="Работа манипулятора с BMW">
+                    <div class="gallery-caption"><i class="fas fa-car-crash"></i> Бережная эвакуация манипулятором</div>
+                </a>
+                <a href="manipulator-atlas.jpg" target="_blank" class="gallery-item reveal right">
+                    <img src="manipulator-atlas.jpg" alt="Манипулятор Atlas">
+                    <div class="gallery-caption"><i class="fas fa-dolly"></i> Перевозка тяжелых грузов и спецтехники</div>
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="reveal">Свяжитесь с нами прямо сейчас!</h2>
+            <p class="reveal">Нужна помощь на дороге? Не теряйте ни минуты!</p>
+            <div class="contact-info reveal zoom">
+                <i class="fas fa-phone-alt"></i> Телефон: <a href="tel:+77474640078" style="color:var(--secondary-color); text-decoration:none;">+7 (747) 464-00-78</a><br>
+                <i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/77474640078" target="_blank" style="color:var(--secondary-color); text-decoration:none;">Написать Ержану</a>
+            </div>
+            <p class="reveal">Мы работаем для вас 24 часа в сутки, 7 дней в неделю!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Услуги Эвакуатора и Манипулятора. Все права защищены.</p>
+            <div class="social-icons">
+                </div>
+        </div>
+    </footer>
+
+    <div class="fab-buttons">
+        <a href="tel:+77474640078" class="fab-button call" aria-label="Позвонить Ержану"><i class="fas fa-phone-alt"></i></a>
+        <a href="https://wa.me/77474640078" target="_blank" class="fab-button whatsapp" aria-label="Написать в WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        // Инициализация ScrollReveal
+        ScrollReveal().reveal('.reveal', { 
+            delay: 200, 
+            distance: '50px', 
+            duration: 800, 
+            easing: 'ease-out',
+            origin: 'bottom',
+            reset: false // Анимация происходит один раз при появлении элемента
+        });
+        ScrollReveal().reveal('.reveal.left', { origin: 'left', distance: '50px' });
+        ScrollReveal().reveal('.reveal.right', { origin: 'right', distance: '50px' });
+        ScrollReveal().reveal('.reveal.zoom', { scale: 0.8, distance: '0px' });
+    </script>
 </body>
 </html>
 
