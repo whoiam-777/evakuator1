@@ -190,6 +190,551 @@
             align-items: center;
             background: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.9)), 
                         url('https://images.unsplash.com/photo-1594073380486-1d1209b555e7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Services --- */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+        }
+
+        /* --- Stats / Advantages --- */
+        .stats {
+            background: linear-gradient(rgba(11, 14, 20, 0.9), rgba(11, 14, 20, 0.9)),
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80') center/cover;
+            background-attachment: fixed; /* Parallax */
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Fleet (Slider Mockup) --- */
+        .fleet-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+        .fleet-wrapper::-webkit-scrollbar { display: none; }
+
+        .fleet-card {
+            min-width: 300px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+        }
+
+        .fleet-img {
+            width: 100%;
+            height: 200px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+        
+        .fleet-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fleet-info {
+            padding: 20px;
+        }
+
+        .fleet-info h4 { margin-bottom: 10px; color: #fff; }
+        .specs { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- Process --- */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid transparent;
+        }
+
+        .step:hover { border-color: var(--gold); }
+
+        .step-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.1);
+            min-width: 50px;
+        }
+
+        .step-content h4 { color: var(--gold); margin-bottom: 5px; }
+
+        /* --- Pricing --- */
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .price-card.featured {
+            border-color: var(--gold);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .price-val {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: #fff;
+        }
+        
+        .price-val span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+
+        /* --- Contact --- */
+        .contact-box {
+            background: linear-gradient(135deg, #1e2532 0%, #11151e 100%);
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid var(--border-glass);
+        }
+
+        .big-phone {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 20px 0;
+            transition: var(--transition);
+        }
+        
+        .big-phone:hover { color: var(--gold); }
+
+        .contact-person {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* --- Floating Button --- */
+        .float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.8rem;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            z-index: 100;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Adaptations --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-btns { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .section { padding: 60px 0; }
+            .contact-box { padding: 30px; }
+            .price-card.featured { transform: scale(1); }
+            .header-phone { display: none; } /* Hide in header on small mobile, rely on CTA */
+            .logo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; color: var(--gold); font-weight: 600; letter-spacing: 2px;">ЗАГРУЗКА...</p>
+    </div>
+
+    <header>
+        <div class="container nav-content">
+            <div class="logo">Auto<span>Rescue</span></div>
+            <div class="header-contact">
+                <a href="tel:+77474640078" class="header-phone">+7 747 464-00-78</a>
+                <span class="header-name">Ержан (24/7)</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>ЭВАКУАТОР <br> <span class="gold-text">И МАНИПУЛЯТОР</span></h1>
+            <p>Профессиональная помощь на дороге. Быстрая подача, современная техника и бережное отношение к вашему авто.</p>
+            <div class="hero-btns">
+                <a href="tel:+77474640078" class="btn btn-primary">
+                    <i class="fa-solid fa-phone"></i> Позвонить Ержану
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    Услуги
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3 data-target="10">0</h3>
+                    <p>Лет опыта</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 data-target="15000">0</h3>
+                    <p>Заказов выполнено</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 data-target="20">0</h3>
+                    <p>Минут подача</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3>24/7</h3>
+                    <p>Режим работы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>Что мы делаем</span>
+                <h2>Наши Услуги</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-car-side service-icon"></i>
+                    <h3>Эвакуатор легковых</h3>
+                    <p>Бережная погрузка и транспортировка седанов, хэтчбеков и купе. Полная страховка.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-truck-monster service-icon"></i>
+                    <h3>Внедорожники / Джипы</h3>
+                    <p>Мощная техника для тяжелых автомобилей. Работаем в сложных условиях.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-truck-pickup service-icon"></i>
+                    <h3>Манипулятор</h3>
+                    <p>Погрузка с помощью крана. Идеально для авто без колес, заблокированных КПП или грузов.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-road service-icon"></i>
+                    <h3>Межгород</h3>
+                    <p>Транспортировка автомобилей по Казахстану. Надежно и в срок.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-hard-hat service-icon"></i>
+                    <h3>Спецтехника</h3>
+                    <p>Перевозка катков, погрузчиков и строительного оборудования до 5 тонн.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fa-solid fa-clock service-icon"></i>
+                    <h3>Срочный вызов</h3>
+                    <p>Приоритетная подача машины в любую точку города за 15-20 минут.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #11151e;">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>Автопарк</span>
+                <h2>Наша Техника</h2>
+            </div>
+            <div class="fleet-wrapper reveal">
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <i class="fa-solid fa-truck-ramp-box fa-3x"></i>
+                    </div>
+                    <div class="fleet-info">
+                        <h4>Hyundai Mighty</h4>
+                        <div class="specs"><span>Г/П: 3.5т</span><span>Платформа</span></div>
+                    </div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <i class="fa-solid fa-truck-pickup fa-3x"></i>
+                    </div>
+                    <div class="fleet-info">
+                        <h4>Isuzu Manipulator</h4>
+                        <div class="specs"><span>Стрела: 3т</span><span>Борт: 5т</span></div>
+                    </div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <i class="fa-solid fa-truck-field fa-3x"></i>
+                    </div>
+                    <div class="fleet-info">
+                        <h4>GAZ Next</h4>
+                        <div class="specs"><span>Г/П: 2.5т</span><span>Город</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>Процесс</span>
+                <h2>Как мы работаем</h2>
+            </div>
+            <div class="process-steps reveal">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <i class="fa-solid fa-phone-volume" style="color:var(--gold); margin-bottom:5px;"></i>
+                        <h4>Звонок Ержану</h4>
+                        <p style="font-size: 0.9        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* --- Loader --- */
+        #loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--gold);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* --- Header --- */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 20px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .header-contact {
+            text-align: right;
+        }
+
+        .header-phone {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .header-name {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.9)), 
+                        url('https://images.unsplash.com/photo-1594073380486-1d1209b555e7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
             /* Placeholder image for generic expensive car/road vibe */
         }
 
@@ -1024,5 +1569,6 @@
     </script>
 </body>
 </html>
+
 
 
