@@ -3,1572 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Эвакуатор и Манипулятор 24/7. Премиум сервис, быстрая подача, опытные водители. Звоните Ержану: +7 747 464-00-78.">
-    <meta name="keywords" content="эвакуатор, манипулятор, автопомощь, перевозка авто, спецтехника">
-    <title>Эвакуатор и Манипулятор | Premium Service</title>
-    
+    <title>МАНИПУЛЯТОР АЛМАТЫ | Ержан</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;800&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            /* Palette - Premium Dark */
-            --bg-dark: #0b0e14;
-            --bg-card: #151a23;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            
-            /* Accents */
-            --gold: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa842c 100%);
-            --red-accent: #ef4444;
-            
-            /* Effects */
-            --glass: rgba(21, 26, 35, 0.7);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.15);
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --bg-dark: #02040a;
+            --glass-bg: rgba(20, 30, 45, 0.85); /* Чуть темнее стекло для читаемости */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+            --platinum-gradient: linear-gradient(135deg, #ffffff, #b0b0b0);
+            --accent-blue: #00c3ff;
+            --font-main: 'Exo 2', sans-serif;
+            --font-head: 'Montserrat', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Manrope', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Typography & Utils --- */
-        h1, h2, h3 {
-            font-weight: 800;
-            line-height: 1.2;
             color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            /* ФОН: Спецтехника / Манипулятор в работе (Темная обработка) */
+            background-image: url('https://images.unsplash.com/photo-1531610666014-b1597d314856?q=80&w=2574&auto=format&fit=crop'); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding-bottom: 80px;
+        }
+        
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 5, 15, 0.9); z-index: -1; backdrop-filter: blur(3px);
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .gold-text {
-            color: var(--gold);
-            background: var(--gold-gradient);
+        .platinum-text {
+            background: var(--platinum-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            text-shadow: 0px 5px 20px rgba(255,255,255,0.1);
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 80px 0; }
+
+        /* Карточки */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            transition: 0.4s;
+        }
+        .glass-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 30px rgba(0, 195, 255, 0.25);
+            transform: translateY(-5px);
         }
 
-        .btn-primary {
-            background: var(--gold-gradient);
+        /* Кнопка с пульсацией */
+        .btn-platinum {
+            display: inline-block; padding: 20px 50px;
+            background: linear-gradient(180deg, #fff, #c0c0c0);
             color: #000;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.1);
-            color: #fff;
-            border-color: #fff;
-        }
-
-        /* --- Loader --- */
-        #loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.5s ease;
+            font-weight: 800; text-transform: uppercase; text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            transition: 0.3s; position: relative; overflow: hidden;
+            font-family: var(--font-head); letter-spacing: 1px;
+            animation: btn-pulse 2s infinite;
         }
         
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--gold);
-            animation: spin 1s ease-in-out infinite;
+        @keyframes btn-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* --- Header --- */
-        header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 10;
-            padding: 20px 0;
+        .btn-blue {
+            display: inline-block; padding: 18px 45px;
+            background: rgba(0, 195, 255, 0.05); border: 1px solid var(--accent-blue);
+            color: var(--accent-blue); border-radius: 6px;
+            font-weight: 700; text-transform: uppercase; text-decoration: none;
+            transition: 0.3s; letter-spacing: 1px;
         }
+        .btn-blue:hover { background: rgba(0, 195, 255, 0.15); color: #fff; box-shadow: 0 0 20px rgba(0, 195, 255, 0.4); }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo span { color: var(--gold); }
-
-        .header-contact {
-            text-align: right;
-        }
-
-        .header-phone {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .header-name {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-        }
-
-        /* --- Hero Section --- */
+        /* Hero секция */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.9)), 
-                        url('https://images.unsplash.com/photo-1594073380486-1d1209b555e7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            height: 90vh; min-height: 550px; display: flex; align-items: center; justify-content: center; text-align: center;
         }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 25px; }
+        .hero p { font-size: 1.1rem; color: #aab; margin-bottom: 45px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.5; max-width: 800px; margin-left: auto; margin-right: auto;}
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center; }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
+        /* Услуги */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; color: #fff; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-icon { font-size: 3rem; margin-bottom: 20px; color: var(--accent-blue); text-shadow: 0 0 25px rgba(0,195,255,0.6); }
+        .service-item h3 { margin-bottom: 10px; font-size: 1.4rem; color: #fff; }
+        .service-item p { color: #8faab9; line-height: 1.5; font-size: 0.95rem; }
+
+        /* Галерея */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-card { height: 280px; border-radius: 12px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+        .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(20%); }
+        .gallery-card:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); }
+
+        /* Контакты */
+        .stats-box { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+        .stat-num { font-size: 3.5rem; font-weight: 800; display: block; margin-bottom: 5px; color: var(--accent-blue); font-family: var(--font-head); }
+        .contact-wrap { display: flex; flex-wrap: wrap; gap: 40px; }
+        .contact-info { flex: 1; min-width: 300px; }
+        .contact-row { display: flex; align-items: center; margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-left: 2px solid var(--accent-blue); border-radius: 0 8px 8px 0; }
+        .contact-form { flex: 1; min-width: 300px; }
+        .inp { width: 100%; padding: 18px; margin-bottom: 15px; background: rgba(0,0,0,0.4); border: 1px solid #333; color: #fff; border-radius: 6px; font-family: var(--font-main); }
+        .inp:focus { border-color: var(--accent-blue); outline: none; box-shadow: 0 0 15px rgba(0,195,255,0.2); }
+
+        /* Мобильная панель */
+        .mob-bar {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 94%; max-width: 450px;
+            background: rgba(12, 22, 35, 0.95); backdrop-filter: blur(12px); padding: 8px; border-radius: 12px;
+            display: none; gap: 10px; z-index: 2000; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        .mob-btn { flex: 1; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.85rem;}
+        .m-call { background: #fff; color: #000; }
+        .m-wa { background: #25D366; color: #fff; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-btns {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        /* --- Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Services --- */
-        .section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .section-title span {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-        }
-
-        /* --- Stats / Advantages --- */
-        .stats {
-            background: linear-gradient(rgba(11, 14, 20, 0.9), rgba(11, 14, 20, 0.9)),
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80') center/cover;
-            background-attachment: fixed; /* Parallax */
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        /* --- Fleet (Slider Mockup) --- */
-        .fleet-wrapper {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-        }
-        .fleet-wrapper::-webkit-scrollbar { display: none; }
-
-        .fleet-card {
-            min-width: 300px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .fleet-img {
-            width: 100%;
-            height: 200px;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-        }
-        
-        .fleet-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .fleet-info {
-            padding: 20px;
-        }
-
-        .fleet-info h4 { margin-bottom: 10px; color: #fff; }
-        .specs { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- Process --- */
-        .process-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(255,255,255,0.03);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid transparent;
-        }
-
-        .step:hover { border-color: var(--gold); }
-
-        .step-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.1);
-            min-width: 50px;
-        }
-
-        .step-content h4 { color: var(--gold); margin-bottom: 5px; }
-
-        /* --- Pricing --- */
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .price-card.featured {
-            border-color: var(--gold);
-            transform: scale(1.05);
-            z-index: 2;
-        }
-
-        .price-val {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 20px 0;
-            color: #fff;
-        }
-        
-        .price-val span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-
-        /* --- Contact --- */
-        .contact-box {
-            background: linear-gradient(135deg, #1e2532 0%, #11151e 100%);
-            padding: 60px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid var(--border-glass);
-        }
-
-        .big-phone {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin: 20px 0;
-            transition: var(--transition);
-        }
-        
-        .big-phone:hover { color: var(--gold); }
-
-        .contact-person {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* --- Floating Button --- */
-        .float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-size: 1.8rem;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            z-index: 100;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- Mobile Adaptations --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-            .section { padding: 60px 0; }
-            .contact-box { padding: 30px; }
-            .price-card.featured { transform: scale(1); }
-            .header-phone { display: none; } /* Hide in header on small mobile, rely on CTA */
-            .logo { font-size: 1.2rem; }
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) { .mob-bar { display: flex; } .hero h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
-
-    <div id="loader">
-        <div class="spinner"></div>
-        <p style="margin-top: 20px; color: var(--gold); font-weight: 600; letter-spacing: 2px;">ЗАГРУЗКА...</p>
-    </div>
-
-    <header>
-        <div class="container nav-content">
-            <div class="logo">Auto<span>Rescue</span></div>
-            <div class="header-contact">
-                <a href="tel:+77474640078" class="header-phone">+7 747 464-00-78</a>
-                <span class="header-name">Ержан (24/7)</span>
-            </div>
-        </div>
-    </header>
-
     <section class="hero">
-        <div class="container hero-content">
-            <h1>ЭВАКУАТОР <br> <span class="gold-text">И МАНИПУЛЯТОР</span></h1>
-            <p>Профессиональная помощь на дороге. Быстрая подача, современная техника и бережное отношение к вашему авто.</p>
-            <div class="hero-btns">
-                <a href="tel:+77474640078" class="btn btn-primary">
-                    <i class="fa-solid fa-phone"></i> Позвонить Ержану
-                </a>
-                <a href="#services" class="btn btn-outline">
-                    Услуги
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <h3 data-target="10">0</h3>
-                    <p>Лет опыта</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="15000">0</h3>
-                    <p>Заказов выполнено</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="20">0</h3>
-                    <p>Минут подача</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3>24/7</h3>
-                    <p>Режим работы</p>
-                </div>
+            <p class="reveal" style="color:var(--accent-blue); font-weight:700; margin-bottom:10px;">ЕРЖАН .TOWING</p>
+            
+            <h1 class="reveal platinum-text">МАНИПУЛЯТОР <br> ЭВАКУАТОР</h1>
+            <p class="reveal">АЛМАТЫ • ПЕРЕВОЗКА ЛЮБОГО ВИДА И СЛОЖНОСТИ • 24/7</p>
+            
+            <div class="hero-btns reveal">
+                <a href="tel:+77474640078" class="btn-platinum">Заказать Манипулятор</a>
+                <a href="https://wa.me/77474640078" class="btn-blue">Написать в WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section">
+    <section>
         <div class="container">
             <div class="section-title reveal">
-                <span>Что мы делаем</span>
                 <h2>Наши Услуги</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-car-side service-icon"></i>
-                    <h3>Эвакуатор легковых</h3>
-                    <p>Бережная погрузка и транспортировка седанов, хэтчбеков и купе. Полная страховка.</p>
+                
+                <div class="glass-card service-item reveal" data-tilt style="border-color: var(--accent-blue);">
+                    <div class="service-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h3>Манипулятор 5Т</h3>
+                    <p>Профессиональная перевозка грузов, контейнеров, бытовок и стройматериалов. Вылет стрелы 10 метров. Аккуратная работа краном.</p>
                 </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-monster service-icon"></i>
-                    <h3>Внедорожники / Джипы</h3>
-                    <p>Мощная техника для тяжелых автомобилей. Работаем в сложных условиях.</p>
+
+                <div class="glass-card service-item reveal" data-tilt>
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Сложная погрузка</h3>
+                    <p>Любая сложность, любая погрузка. Работа в стесненных условиях, вытаскивание из кюветов, перевернутые авто, заблокированные колеса.</p>
                 </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-pickup service-icon"></i>
-                    <h3>Манипулятор</h3>
-                    <p>Погрузка с помощью крана. Идеально для авто без колес, заблокированных КПП или грузов.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-road service-icon"></i>
-                    <h3>Межгород</h3>
-                    <p>Транспортировка автомобилей по Казахстану. Надежно и в срок.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-hard-hat service-icon"></i>
-                    <h3>Спецтехника</h3>
-                    <p>Перевозка катков, погрузчиков и строительного оборудования до 5 тонн.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-clock service-icon"></i>
-                    <h3>Срочный вызов</h3>
-                    <p>Приоритетная подача машины в любую точку города за 15-20 минут.</p>
+
+                <div class="glass-card service-item reveal" data-tilt>
+                    <div class="service-icon"><i class="fas fa-car-crash"></i></div>
+                    <h3>Эвакуация Авто</h3>
+                    <p>Транспортировка легковых авто и джипов по Алматы и области. Быстрая подача и полная безопасность.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #11151e;">
+    <section>
         <div class="container">
             <div class="section-title reveal">
-                <span>Автопарк</span>
-                <h2>Наша Техника</h2>
+                <h2 class="platinum-text">Техника</h2>
             </div>
-            <div class="fleet-wrapper reveal">
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-ramp-box fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Hyundai Mighty</h4>
-                        <div class="specs"><span>Г/П: 3.5т</span><span>Платформа</span></div>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-pickup fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Isuzu Manipulator</h4>
-                        <div class="specs"><span>Стрела: 3т</span><span>Борт: 5т</span></div>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-field fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>GAZ Next</h4>
-                        <div class="specs"><span>Г/П: 2.5т</span><span>Город</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Процесс</span>
-                <h2>Как мы работаем</h2>
-            </div>
-            <div class="process-steps reveal">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
-                        <i class="fa-solid fa-phone-volume" style="color:var(--gold); margin-bottom:5px;"></i>
-                        <h4>Звонок Ержану</h4>
-                        <p style="font-size: 0.9        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.1);
-            color: #fff;
-            border-color: #fff;
-        }
-
-        /* --- Loader --- */
-        #loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.5s ease;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--gold);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* --- Header --- */
-        header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 10;
-            padding: 20px 0;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo span { color: var(--gold); }
-
-        .header-contact {
-            text-align: right;
-        }
-
-        .header-phone {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .header-name {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.9)), 
-                        url('https://images.unsplash.com/photo-1594073380486-1d1209b555e7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
-            /* Placeholder image for generic expensive car/road vibe */
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-btns {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        /* --- Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Services --- */
-        .section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .section-title span {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            group: cursor-pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-        }
-
-        /* --- Stats / Advantages --- */
-        .stats {
-            background: linear-gradient(rgba(11, 14, 20, 0.9), rgba(11, 14, 20, 0.9)),
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80') center/cover;
-            background-attachment: fixed; /* Parallax */
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        /* --- Fleet (Slider Mockup) --- */
-        .fleet-wrapper {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-        }
-        .fleet-wrapper::-webkit-scrollbar { display: none; }
-
-        .fleet-card {
-            min-width: 300px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .fleet-img {
-            width: 100%;
-            height: 200px;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-        }
-        
-        .fleet-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .fleet-info {
-            padding: 20px;
-        }
-
-        .fleet-info h4 { margin-bottom: 10px; color: #fff; }
-        .specs { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- Process --- */
-        .process-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(255,255,255,0.03);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid transparent;
-        }
-
-        .step:hover { border-color: var(--gold); }
-
-        .step-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.1);
-            min-width: 50px;
-        }
-
-        .step-content h4 { color: var(--gold); margin-bottom: 5px; }
-
-        /* --- Pricing --- */
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .price-card.featured {
-            border-color: var(--gold);
-            transform: scale(1.05);
-            z-index: 2;
-        }
-
-        .price-val {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 20px 0;
-            color: #fff;
-        }
-        
-        .price-val span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-
-        /* --- Contact --- */
-        .contact-box {
-            background: linear-gradient(135deg, #1e2532 0%, #11151e 100%);
-            padding: 60px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid var(--border-glass);
-        }
-
-        .big-phone {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin: 20px 0;
-            transition: var(--transition);
-        }
-        
-        .big-phone:hover { color: var(--gold); }
-
-        .contact-person {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* --- Floating Button --- */
-        .float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-size: 1.8rem;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            z-index: 100;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- Mobile Adaptations --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-            .section { padding: 60px 0; }
-            .contact-box { padding: 30px; }
-            .price-card.featured { transform: scale(1); }
-            .header-phone { display: none; } /* Hide in header on small mobile, rely on CTA */
-            .logo { font-size: 1.2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="loader">
-        <div class="spinner"></div>
-        <p style="margin-top: 20px; color: var(--gold); font-weight: 600; letter-spacing: 2px;">ЗАГРУЗКА...</p>
-    </div>
-
-    <header>
-        <div class="container nav-content">
-            <div class="logo">Auto<span>Rescue</span></div>
-            <div class="header-contact">
-                <a href="tel:+77474640078" class="header-phone">+7 747 464-00-78</a>
-                <span class="header-name">Ержан (24/7)</span>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>ЭВАКУАТОР <br> <span class="gold-text">И МАНИПУЛЯТОР</span></h1>
-            <p>Профессиональная помощь на дороге. Быстрая подача, современная техника и бережное отношение к вашему авто.</p>
-            <div class="hero-btns">
-                <a href="tel:+77474640078" class="btn btn-primary">
-                    <i class="fa-solid fa-phone"></i> Позвонить Ержану
-                </a>
-                <a href="#services" class="btn btn-outline">
-                    Услуги
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <h3 data-target="10">0</h3>
-                    <p>Лет опыта</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="15000">0</h3>
-                    <p>Заказов выполнено</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="20">0</h3>
-                    <p>Минут подача</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3>24/7</h3>
-                    <p>Режим работы</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Что мы делаем</span>
-                <h2>Наши Услуги</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-car-side service-icon"></i>
-                    <h3>Эвакуатор легковых</h3>
-                    <p>Бережная погрузка и транспортировка седанов, хэтчбеков и купе. Полная страховка.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-monster service-icon"></i>
-                    <h3>Внедорожники / Джипы</h3>
-                    <p>Мощная техника для тяжелых автомобилей. Работаем в сложных условиях.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-pickup service-icon"></i>
-                    <h3>Манипулятор</h3>
-                    <p>Погрузка с помощью крана. Идеально для авто без колес, заблокированных КПП или грузов.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-road service-icon"></i>
-                    <h3>Межгород</h3>
-                    <p>Транспортировка автомобилей по Казахстану. Надежно и в срок.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-hard-hat service-icon"></i>
-                    <h3>Спецтехника</h3>
-                    <p>Перевозка катков, погрузчиков и строительного оборудования до 5 тонн.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-clock service-icon"></i>
-                    <h3>Срочный вызов</h3>
-                    <p>Приоритетная подача машины в любую точку города за 15-20 минут.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #11151e;">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Автопарк</span>
-                <h2>Наша Техника</h2>
-            </div>
-            <div class="fleet-wrapper reveal">
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-ramp-box fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Hyundai Mighty</h4>
-                        <div class="specs"><span>Г/П: 3.5т</span><span>Платформа</span></div>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-pickup fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Isuzu Manipulator</h4>
-                        <div class="specs"><span>Стрела: 3т</span><span>Борт: 5т</span></div>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-field fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>GAZ Next</h4>
-                        <div class="specs"><span>Г/П: 2.5т</span><span>Город</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Процесс</span>
-                <h2>Как мы работаем</h2>
-            </div>
-            <div class="process-steps reveal">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
-                        <i class="fa-solid fa-phone-volume" style="color:var(--gold); margin-bottom:5px;"></i>
-                         .hero h1 {
-            margin-top: 0;
-            font-size: 3.5em; /* Больше на десктопе */
-            animation: fadeInDown 1s ease-out;
-        }
-        .hero p {
-            font-size: 1.4em;
-            margin-bottom: 40px;
-            animation: fadeInUp 1.2s ease-out;
-        }
-        .hero .contact-btn {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: var(--text-light);
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            animation: pulse 1.5s infinite;
-        }
-        .hero .contact-btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            animation: none; /* Отключаем пульс при наведении */
-        }
-
-        /* Секция преимуществ */
-        .features {
-            padding: 60px 0;
-            background-color: var(--bg-light);
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .feature-item {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .feature-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-        .feature-item .icon {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            animation: rotateIn 1s ease-out; /* Анимация иконок */
-        }
-        .feature-item h3 {
-            font-size: 1.4em;
-            color: var(--secondary-color);
-        }
-        .feature-item p {
-            font-size: 0.95em;
-            color: var(--text-dark);
-        }
-
-        /* Секция услуг/галереи */
-        .services-gallery {
-            background: var(--bg-dark);
-            padding: 80px 0;
-            color: var(--text-light);
-        }
-        .services-gallery h2 {
-            color: var(--text-light);
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .gallery-item {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-        .gallery-item::before { /* Эффект наведения */
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(var(--primary-color-rgb, 255, 71, 87), 0.6);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        .gallery-item:hover::before { opacity: 1; }
-        .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover img { transform: scale(1.05); }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(var(--secondary-color-rgb, 44, 62, 80), 0.9) 0%, rgba(var(--secondary-color-rgb, 44, 62, 80), 0) 100%);
-            color: white;
-            padding: 15px;
-            font-weight: 600;
-            font-size: 1.1em;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 2;
-        }
-        .gallery-caption i {
-            margin-right: 8px;
-            color: var(--primary-color);
-        }
-
-        /* Контактная секция */
-        .contact-section {
-            padding: 60px 0;
-            background: var(--bg-light);
-            text-align: center;
-        }
-        .contact-section p {
-            font-size: 1.2em;
-            margin-bottom: 25px;
-        }
-        .contact-section .contact-info {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 30px;
-        }
-        .contact-section .contact-info i {
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-
-        /* Футер */
-        footer {
-            background: var(--bg-dark);
-            color: var(--text-light);
-            text-align: center;
-            padding: 30px 0;
-            font-size: 0.9em;
-        }
-        footer .social-icons a {
-            color: var(--text-light);
-            font-size: 1.8em;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        footer .social-icons a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Плавающие кнопки WhatsApp и Call */
-        .fab-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .fab-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.8em;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: bounceIn 0.8s ease-out;
-        }
-        .fab-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-        .fab-button.whatsapp { background-color: #25d366; }
-        .fab-button.call { background-color: var(--primary-color); }
-        
-        /* Адаптивность для мобильных */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2em; }
-            h2 { font-size: 1.8em; }
-            .hero { padding: 60px 15px; }
-            .hero p { font-size: 1.1em; margin-bottom: 30px; }
-            .hero .contact-btn { padding: 12px 25px; font-size: 1em; }
-            .features-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .fab-buttons { bottom: 15px; right: 15px; gap: 10px; }
-            .fab-button { width: 50px; height: 50px; font-size: 1.5em; }
-        }
-
-        /* Keyframe Анимации */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-            50% { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        }
-        @keyframes rotateIn {
-            from { opacity: 0; transform: rotate(-90deg) scale(0.5); }
-            to { opacity: 1; transform: rotate(0deg) scale(1); }
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-
-        /* Анимации при прокрутке (ScrollReveal - на JavaScript) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal.left {
-            transform: translateX(-50px);
-        }
-        .reveal.left.active {
-            transform: translateX(0);
-        }
-        .reveal.right {
-            transform: translateX(50px);
-        }
-        .reveal.right.active {
-            transform: translateX(0);
-        }
-        .reveal.zoom {
-            transform: scale(0.8);
-        }
-        .reveal.zoom.active {
-            transform: scale(1);
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo">ЕРЖАН</div>
-        <div class="tagline">Эвакуатор & Манипулятор 24/7</div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Быстрая помощь на дороге в любой ситуации!</h1>
-            <p>Эвакуация авто и спецтехники. Подача от 20 минут.</p>
-            <a href="tel:+77474640078" class="contact-btn"><i class="fas fa-phone-alt"></i> Позвонить Ержану</a>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2 class="reveal">Почему выбирают нас?</h2>
-            <div class="features-grid">
-                <div class="feature-item reveal left">
-                    <div class="icon"><i class="fas fa-clock"></i></div>
-                    <h3>Оперативность 24/7</h3>
-                    <p>На связи круглосуточно, без выходных и праздников. Приедем максимально быстро.</p>
-                </div>
-                <div class="feature-item reveal zoom">
-                    <div class="icon"><i class="fas fa-truck-pickup"></i></div>
-                    <h3>Эвакуатор + Манипулятор</h3>
-                    <p>Универсальная техника для любых задач: от легковых до спецтехники.</p>
-                </div>
-                <div class="feature-item reveal right">
-                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3>Любой район и межгород</h3>
-                    <p>Работаем по всему городу и области, возможна перевозка на дальние расстояния.</p>
-                </div>
-                <div class="feature-item reveal left">
-                    <div class="icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Бережная погрузка</h3>
-                    <p>Опытные водители гарантируют аккуратную и безопасную эвакуацию вашего авто.</p>
-                </div>
-                <div class="feature-item reveal zoom">
-                    <div class="icon"><i class="fas fa-tag"></i></div>
-                    <h3>Честные цены</h3>
-                    <p>Фиксированная стоимость услуг, без скрытых доплат. Расчет на месте.</p>
-                </div>
-                <div class="feature-item reveal right">
-                    <div class="icon"><i class="fas fa-tools"></i></div>
-                    <h3>Широкий спектр услуг</h3>
-                    <p>Помощь при поломках, ДТП, вытаскивание из кювета, перевозка спецтехники.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-gallery">
-        <div class="container">
-            <h2 class="reveal">Наша техника и работы</h2>
             <div class="gallery-grid">
-                <a href="evacuator-mercedes.jpg" target="_blank" class="gallery-item reveal left">
-                    <img src="evacuator-mercedes.jpg" alt="Эвакуатор Mercedes-Benz">
-                    <div class="gallery-caption"><i class="fas fa-truck-moving"></i> Эвакуатор Mercedes-Benz</div>
-                </a>
-                <a href="evacuator-bmw.jpg" target="_blank" class="gallery-item reveal zoom">
-                    <img src="evacuator-bmw.jpg" alt="Работа манипулятора с BMW">
-                    <div class="gallery-caption"><i class="fas fa-car-crash"></i> Бережная эвакуация манипулятором</div>
-                </a>
-                <a href="manipulator-atlas.jpg" target="_blank" class="gallery-item reveal right">
-                    <img src="manipulator-atlas.jpg" alt="Манипулятор Atlas">
-                    <div class="gallery-caption"><i class="fas fa-dolly"></i> Перевозка тяжелых грузов и спецтехники</div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="reveal">Свяжитесь с нами прямо сейчас!</h2>
-            <p class="reveal">Нужна помощь на дороге? Не теряйте ни минуты!</p>
-            <div class="contact-info reveal zoom">
-                <i class="fas fa-phone-alt"></i> Телефон: <a href="tel:+77474640078" style="color:var(--secondary-color); text-decoration:none;">+7 (747) 464-00-78</a><br>
-                <i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/77474640078" target="_blank" style="color:var(--secondary-color); text-decoration:none;">Написать Ержану</a>
-            </div>
-            <p class="reveal">Мы работаем для вас 24 часа в сутки, 7 дней в неделю!</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Услуги Эвакуатора и Манипулятора. Все права защищены.</p>
-            <div class="social-icons">
+                <div class="gallery-card reveal">
+                    <img src="https://plus.unsplash.com/premium_photo-1661962947656-e975a59a727d?q=80&w=2070" alt="Манипулятор">
+                    <div class="overlay"><h4 style="color:#fff">Манипулятор 5т</h4><span style="color:#aaa">ISUZU Forward</span></div>
                 </div>
+                <div class="gallery-card reveal">
+                    <img src="https://images.unsplash.com/photo-1615900119312-2acd3a71f3ad?q=80&w=2070" alt="Погрузка">
+                    <div class="overlay"><h4 style="color:#fff">Любая сложность</h4><span style="color:#aaa">Кран + Лебедка</span></div>
+                </div>
+                <div class="gallery-card reveal">
+                    <img src="https://images.unsplash.com/photo-1599388168697-7e6cb9516629?q=80&w=2069" alt="Эвакуатор">
+                    <div class="overlay"><h4 style="color:#fff">Эвакуатор</h4><span style="color:#aaa">Сдвижная платформа</span></div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <div class="fab-buttons">
-        <a href="tel:+77474640078" class="fab-button call" aria-label="Позвонить Ержану"><i class="fas fa-phone-alt"></i></a>
-        <a href="https://wa.me/77474640078" target="_blank" class="fab-button whatsapp" aria-label="Написать в WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <section>
+        <div class="container glass-card reveal">
+            <div class="stats-box">
+                <div><span class="stat-num">15</span><span style="color:#8faab9; font-size:0.8rem;">МИНУТ ПОДАЧА</span></div>
+                <div><span class="stat-num">24/7</span><span style="color:#8faab9; font-size:0.8rem;">РАБОТАЕМ В АЛМАТЫ</span></div>
+                <div><span class="stat-num">100%</span><span style="color:#8faab9; font-size:0.8rem;">ГАРАНТИЯ</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container glass-card reveal">
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <h2 class="platinum-text" style="margin-bottom:30px;">СВЯЗЬ</h2>
+                    <div class="contact-row">
+                        <i class="fas fa-user-circle" style="font-size:2rem; margin-right:15px; color:#fff"></i>
+                        <div><h4 style="color:#888; font-size:0.75rem">Владелец</h4><div style="font-size:1.1rem; font-weight:700">Ержан</div></div>
+                    </div>
+                    <div class="contact-row">
+                        <i class="fas fa-phone-alt" style="font-size:2rem; margin-right:15px; color:#fff"></i>
+                        <div><h4 style="color:#888; font-size:0.75rem">Телефон</h4><div><a href="tel:+77474640078" style="color:#fff; text-decoration:none; font-size:1.1rem; font-weight:700">+7 747 464-00-78</a></div></div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" class="inp" placeholder="Ваше Имя">
+                    <input type="tel" class="inp" placeholder="Телефон">
+                    <button class="btn-platinum" style="width:100%; border:none;">Заказать Звонок</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="mob-bar">
+        <a href="tel:+77474640078" class="mob-btn m-call"><i class="fas fa-phone"></i> Позвонить</a>
+        <a href="https://wa.me/77474640078" class="mob-btn m-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-        // Инициализация ScrollReveal
-        ScrollReveal().reveal('.reveal', { 
-            delay: 200, 
-            distance: '50px', 
-            duration: 800, 
-            easing: 'ease-out',
-            origin: 'bottom',
-            reset: false // Анимация происходит один раз при появлении элемента
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.transform = `perspective(1000px) rotateX(${y * -0.05}deg) rotateY(${x * 0.05}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'none';
+            });
         });
-        ScrollReveal().reveal('.reveal.left', { origin: 'left', distance: '50px' });
-        ScrollReveal().reveal('.reveal.right', { origin: 'right', distance: '50px' });
-        ScrollReveal().reveal('.reveal.zoom', { scale: 0.8, distance: '0px' });
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault(); alert('Заявка принята! Ожидайте звонка.');
+        });
     </script>
 </body>
 </html>
-
-
-
